@@ -145,7 +145,7 @@ def login():
     username = request.form["username"].strip()
     password = request.form["password"]
 
-    conn = sqlite3.connect(DB)
+    conn = sqlite3.connect(DB, timeout=30)
     user = conn.execute(
         "SELECT password FROM users WHERE username = ?",
         (username,)
